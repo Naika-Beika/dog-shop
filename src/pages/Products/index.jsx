@@ -1,40 +1,32 @@
-import { React, useState } from "react";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { React } from "react";
+import { useQuery } from "react-query";
+import { useSelector } from "react-redux";
 import { fetchProducts } from "../../api/products";
-import { TOKEN } from "../../utils/constants"
+import { useAuth } from "../../hooks/useAuth";
+
 
 export const Products = () => {
-    const navigate = useNavigate()
-    const [data, setData] = useState({ total: 0, products: [] })
+    const search = useSelector(state => state.filter.search)
+    const { token } = useAuth()
 
-    useEffect(() => {
-      const token = localStorage.getItem(TOKEN)
-      if(!token) navigate ('/signin')
-    }, [navigate])
-
-    useEffect(() =>{
-      const fetchData = async () =>{
-          try{
-          const res = await fetchProducts()
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ['getAllProducts', search],
+        queryFn: async () => {
+          const res = await fetchProducts(token, search)
           const responce = await res.json()
-          
-          if(res.status === 200){
-              return setData(responce)
-          }
-          alert(responce.message)
-      } catch (error) {
-          alert(error)
-      }
-  }
-  
-      fetchData()
-  }, [])
-    
+
+          return responce;
+        }
+    })
+
+    if (isLoading) return <p>Идет загрузка</p>
+
+    if (isError) return <p>Произошла ошибка: {error}</p>
+   
   return(
     <div>
         <h1>Каталог</h1>
-        <p>{data.total}</p>
+        <p>Количество товаров: {data.total}</p>
         <div>
             {data.products.map(product => {
                 return <p key={product._id}>{product.name}</p>

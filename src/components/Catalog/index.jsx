@@ -27,7 +27,7 @@ export const Catalog = () =>{
     return(
         <div>
             <h1>Каталог</h1>
-            <p>{data.total}</p>
+            
             <div>
                 {data.products.map(product => {
                     return <p key={product._id}>{product.name}</p>
