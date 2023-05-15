@@ -1,7 +1,6 @@
-import { TOKEN } from '../utils/constants'
 
-export const fetchProducts = () => {
-    return fetch('https://api.react-learning.ru/products/',{
+export const fetchProducts = (TOKEN, search) => {
+    return fetch(`https://api.react-learning.ru/products/search?query=${search}`,{
       headers: {
         Authorization: `Bearer ${TOKEN}`
       }

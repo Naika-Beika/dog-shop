@@ -1,28 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { signInFetch } from '../../api/user';
 import { useNavigate } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import { setUpUser } from '../../redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { useNoAuth } from '../../hooks/useNoAuth';
 
 export const SignIn = () =>{
    const navigate = useNavigate()
-   const [error, setError] = useState(false)
-
+   const dispatch = useDispatch()
+   useNoAuth()
+   
    const initialValues = {
     email: '',
     password: ''
    }
 
-   const onSubmit = async (values) => {
-     const res = await signInFetch(values);
-     const responce = await res.json();
+   const { mutateAsync, isError, isLoading } = useMutation({
+     mutationFn: async (values) =>{
+       const res = await signInFetch(values);
+       if (res.ok) {
+         const responce = await res.json();
+         return responce
+        }
 
-     if(res.ok){
-        localStorage.setItem('token_auth', responce.token)
-        return navigate('/products')
+      return false
+     } 
+   })
+
+   const onSubmit = async (values) => {
+     const responce = await mutateAsync(values)
+     if (!responce) return <p>Произошла ошибка:{isError}</p>
+
+     dispatch(setUpUser({ ...responce.data, token: responce.token }))
+
+     return navigate ('/products')
      }
-     return setError(responce.message)
-  }
+     
+     if (isLoading) return <p>Идет загрузка</p>
+  
 
   const signInSchema = Yup.object().shape({
     password: Yup.string().required('Обязательно'),
@@ -38,7 +56,7 @@ export const SignIn = () =>{
           onSubmit={onSubmit}
          >
           <Form>
-           <div>
+           <div className='p-2'>
             <Field
               id="email"
               name="email"
@@ -53,9 +71,9 @@ export const SignIn = () =>{
               <ErrorMessage className="error" name="password" component='p' />
             </div>
             
-            <button type="submit">Submit</button>
+            <button className='m-3' type="submit">Submit</button>
 
-            {error && <p className='error'>{error}</p>}
+            {isError && <p className='error'>{isError}</p>}
           </Form>
         </Formik>
         </>
