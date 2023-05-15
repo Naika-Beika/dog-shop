@@ -26,9 +26,8 @@ export const Products = () => {
   return(
     <div>
         <h1>Каталог</h1>
-        <p>Количество товаров: {data.total}</p>
         <div>
-            {data.products.map(product => {
+            {data.map(product => {
                 return <p key={product._id}>{product.name}</p>
             })}
         </div>
