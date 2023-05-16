@@ -39,5 +39,6 @@ export const Search = () =>{
     value = {searchValue}
     onChange={(event) => handleChange(event)}
     placeholder="Поиск"
-    />
+    className="form-control ms-4" 
+     />
 }

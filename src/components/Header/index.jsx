@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { cleanUser } from '../../redux/slices/userSlice';
+import { Search } from '../Search';
 
 
 export const Header = () => {
@@ -34,13 +35,9 @@ export const Header = () => {
                     <a className="nav-link active" aria-current="page" href={link.href}>{link.title}</a>
                   </li>
                 ))}
-                <button onClick={handleExit} className='btn btn-primary ms-4'>Выход</button>
+                <button onClick={handleExit} className='btn btn-primary'>Выход</button>
               </ul>
-              
-              <form className="d-flex" role="search">
-                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                 <button className="btn btn-warning" type="submit">Search</button>
-               </form>
+              <Search />
             </div>
           </nav>
         </header>

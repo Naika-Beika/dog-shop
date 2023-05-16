@@ -2,6 +2,7 @@ import { React } from "react";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
 import { fetchProducts } from "../../api/products";
+import { ProductCard } from "../../components/ProductCard";
 import { useAuth } from "../../hooks/useAuth";
 
 
@@ -28,7 +29,8 @@ export const Products = () => {
         <h1>Каталог</h1>
         <div>
             {data.map(product => {
-                return <p key={product._id}>{product.name}</p>
+                return <ProductCard product={product} key={product._id} />
+                /*<p key={product._id}>{product.name}</p>*/
             })}
         </div>
     </div>

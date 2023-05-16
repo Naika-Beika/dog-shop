@@ -6,10 +6,13 @@ export const User = () => {
 
     return(
         <>
-        <ul>
-          <li>{user.name}</li>
-          <li>{user.about}</li>
-        </ul>
+        <div>
+          <img src={`${user.avatar}`} />
+          <p>{user.name}</p>
+          <p>{user.about}</p>
+          <p>{user.group}</p>
+          <p>{user.email}</p>
+        </div>
         </>
     )
 }
