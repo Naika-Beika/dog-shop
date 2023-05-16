@@ -13,6 +13,7 @@ import { SignUp } from './pages/SignUp';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
+import { User } from './pages/User';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp />
+      },
+      {
+        path: 'user',
+        element: <User />
       }
     ]
   }
