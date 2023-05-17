@@ -30,6 +30,13 @@
   color: #61dafb;
 }
 
+.card-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  justify-content: space-around
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

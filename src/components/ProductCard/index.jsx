@@ -1,11 +1,11 @@
 import React from "react";
 
-export const ProductCard = (product) =>{
- console.log(product)
+export const ProductCard = ({ product }) =>{
+
     return (
         <div>
-          <div className="card" style="width: 18rem;">
-            <img src="..." className="card-img-top" alt="..." />
+          <div className="card" style={{width: "18rem", marginBottom: 30}}>
+            <img src={product.pictures} className="card-img-top" alt="photo" />
              <div className="card-body">
               <h5 className="card-title">{product.name}</h5>
               <p className="card-text">Цена: {product.price}</p>
