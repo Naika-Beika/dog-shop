@@ -4,7 +4,7 @@ export const Home = () => {
 
 
     return (
-      <div className="card mb-3">
+      <div className="card mb-3" style={{background: "#E0FFFF", border: "none" }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img src="13.png" className="img-fluid rounded-start" alt="photo" />

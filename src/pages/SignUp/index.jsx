@@ -76,7 +76,7 @@ export const SignUp = () => {
            <Field name="password" type="password" placeholder="password*"/>
            <ErrorMessage className="error" name="password" component='p' />
            </div>
-           <button className='m-2' type="submit">Submit</button>
+           <button className='m-2 btn btn-primary' type="submit">Submit</button>
            {isError && <p className='error'>{isError}</p>}
          </Form>
      </Formik>

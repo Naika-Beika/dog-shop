@@ -17,8 +17,8 @@ html, body {
   background-size: cover;
   position: relative;
 }
-.main{
-  flex: 1 0 auto;
+.content{
+  height: 100%;
 }
 .footer {
   width: 100%;
