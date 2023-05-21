@@ -49,13 +49,13 @@ export const SignIn = () =>{
 
     return (
         <>
-        <h1>Авторизация</h1>
+        <h1 className='m-4'>Авторизация</h1>
         <Formik
           initialValues={initialValues}
           validationSchema={signInSchema}
           onSubmit={onSubmit}
          >
-          <Form>
+          <Form className='m-4 mb-5'>
            <div className='p-2'>
             <Field
               id="email"

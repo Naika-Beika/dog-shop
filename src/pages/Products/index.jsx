@@ -26,7 +26,7 @@ export const Products = () => {
    
   return(
     <div>
-        <h1>Каталог</h1>
+        <h1 className="m-4">Каталог</h1>
         <div className="card-wrapper">
             {data.map(product => {
                 return <ProductCard product={product} key={product._id} />

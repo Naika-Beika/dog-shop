@@ -14,6 +14,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { User } from './pages/User';
+import { CurrentCard } from './pages/CurrentCard';
 
 const router = createBrowserRouter([
   {
@@ -33,13 +34,17 @@ const router = createBrowserRouter([
         element: <Products />
       },
       {
+        path: 'products/:id',
+        element: <CurrentCard />
+      },
+      {
         path: 'signup',
         element: <SignUp />
       },
       {
         path: 'user',
         element: <User />
-      }
+      },
     ]
   }
 ])

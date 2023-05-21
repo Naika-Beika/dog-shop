@@ -45,7 +45,7 @@ export const SignUp = () => {
 
     return (
         <>
-        <h1>Регистрация</h1>
+        <h1 className='mt-5'>Регистрация</h1>
         <Formik
            initialValues={{
              firstName: '',
@@ -56,7 +56,7 @@ export const SignUp = () => {
            validationSchema={SignupSchema}
            onSubmit={onSubmit}
         >
-          <Form>
+          <Form className='m-4 mb-5'>
             <div className='m-2'>
            <Field id ="firstName" name="firstName" placeholder="Имя"/>
            <ErrorMessage className="error" name="firstName" component='p' />
