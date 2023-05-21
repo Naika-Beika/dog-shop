@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { fetchCurrentProduct } from "../../api/currentProduct";
 import { useAuth } from "../../hooks/useAuth";
 
-
 export const CurrentCard = () =>{
   const { id } = useParams()
   const { token } = useAuth()
@@ -18,13 +17,12 @@ export const CurrentCard = () =>{
       return responce
     }
   })
-console.log(data)
+
   if (isLoading) return <p>Идет загрузка</p>
 
   if (isError) return <p>Произошла ошибка: {error}</p>
 
     return(
-        <>
         <div>
           <div className="row g-0 mt-4">
            <div className="col-md-4">
@@ -32,14 +30,13 @@ console.log(data)
            </div> 
            <div className="col-md-8">
             <div className="card-body"> 
-          <h1><strong>{data.name}</strong></h1>
-          <p>{data.description}</p>
-          <p><strong>Цена:</strong> {data.price} руб.</p>
-          <p><strong>Количество на складе:</strong> {data.stock} шт.</p>
-          </div> 
+              <h1><strong>{data.name}</strong></h1>
+              <p>{data.description}</p>
+              <p><strong>Цена:</strong> {data.price} руб.</p>
+              <p><strong>Количество на складе:</strong> {data.stock} шт.</p>
+            </div> 
+           </div>
           </div>
-          </div>
-          </div>
-        </>
+         </div>
     )
 }
