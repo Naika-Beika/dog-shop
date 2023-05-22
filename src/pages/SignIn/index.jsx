@@ -49,13 +49,13 @@ export const SignIn = () =>{
 
     return (
         <>
-        <h1>Авторизация</h1>
+        <h1 className='m-4'>Авторизация</h1>
         <Formik
           initialValues={initialValues}
           validationSchema={signInSchema}
           onSubmit={onSubmit}
          >
-          <Form>
+          <Form className='m-4 mb-5'>
            <div className='p-2'>
             <Field
               id="email"
@@ -71,7 +71,7 @@ export const SignIn = () =>{
               <ErrorMessage className="error" name="password" component='p' />
             </div>
             
-            <button className='m-3' type="submit">Submit</button>
+            <button className='m-3 btn btn-primary' type="submit">Submit</button>
 
             {isError && <p className='error'>{isError}</p>}
           </Form>
