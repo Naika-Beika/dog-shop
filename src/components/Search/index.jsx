@@ -24,15 +24,15 @@ export const Search = () =>{
     const handleChange = (event) =>{
       setSearchValue(event.target.value)
 
-      if (!event.target.value) return searchParams.delete('search')
+      if (!event.target.value) return setSearchParams((prevParams =>{
+        prevParams.delete('search')
+        return prevParams
+      }))
 
-      const params = {}
-      searchParams.forEach((value, key) => params[key] = value)
-
-      setSearchParams({
-        ...params,
+      return setSearchParams((prevParams => ({
+        ...prevParams,
         search: event.target.value
-      })
+      })))
     }
 
     return <input 

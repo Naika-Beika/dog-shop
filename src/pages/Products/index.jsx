@@ -17,11 +17,11 @@ export const Products = () => {
           const responce = await res.json()
 
           return responce;
-        }
+        },
+        initialData: []
     })
 
     if (isLoading) return <p>Идет загрузка</p>
-
     if (isError) return <p>Произошла ошибка: {error}</p>
    
   return(
